@@ -9,13 +9,13 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     """Runtime configuration loaded from environment variables."""
 
-    app_name: str = "AranyaCore"
+    app_name: str = "aranya-watch"
     app_version: str = "0.1.0"
     environment: str = "development"
     api_prefix: str = "/"
     preview_mode: bool = Field(default=False, alias="PREVIEW_MODE")
     database_url: str = Field(
-        default="postgresql+psycopg://postgres:postgres@localhost:5432/aranyacore",
+        default="postgresql+psycopg://postgres:postgres@localhost:5432/aranya_watch",
         alias="DATABASE_URL",
     )
     firms_api_key: str = Field(default="", alias="FIRMS_API_KEY")

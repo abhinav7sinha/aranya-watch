@@ -14,7 +14,7 @@ fi
 sh "$SCRIPT_DIR/docker_compose.sh" up --build -d
 
 echo
-echo "Waiting for AranyaCore to become healthy..."
+echo "Waiting for aranya-watch to become healthy..."
 
 HEALTH_URL="http://localhost:8000/health"
 MAX_ATTEMPTS=60
@@ -29,13 +29,13 @@ while [ "$ATTEMPT" -le "$MAX_ATTEMPTS" ]; do
 done
 
 if [ "$ATTEMPT" -gt "$MAX_ATTEMPTS" ]; then
-  echo "AranyaCore did not become healthy in time." >&2
+  echo "aranya-watch did not become healthy in time." >&2
   echo "Check backend logs with:" >&2
   echo "  sh scripts/docker_compose.sh logs backend" >&2
   exit 1
 fi
 
-echo "AranyaCore is ready."
+echo "aranya-watch is ready."
 echo "Open:"
 echo "  http://localhost:8000/docs"
 echo "  http://localhost:8000/dashboard"

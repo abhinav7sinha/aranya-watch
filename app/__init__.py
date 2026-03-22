@@ -1,1 +1,1 @@
-"""AranyaCore application package."""
+"""aranya-watch application package."""

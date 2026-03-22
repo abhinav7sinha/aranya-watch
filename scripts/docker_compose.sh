@@ -17,7 +17,7 @@ if [ -S "$HOME/.docker/run/docker.sock" ]; then
 fi
 
 if [ -x "$PLUGIN_PATH/docker-compose" ]; then
-  export DOCKER_CONFIG="${DOCKER_CONFIG:-/tmp/aranyacore-docker-config}"
+  export DOCKER_CONFIG="${DOCKER_CONFIG:-/tmp/aranya-watch-docker-config}"
   mkdir -p "$DOCKER_CONFIG"
   cat > "$DOCKER_CONFIG/config.json" <<EOF
 {

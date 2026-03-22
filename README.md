@@ -1,8 +1,8 @@
-# AranyaCore
+# aranya-watch
 
-AranyaCore is a forest intelligence MVP that ingests near real-time NASA FIRMS fire alerts, stores them in PostgreSQL/PostGIS, and exposes a developer-first REST API with simple geospatial search and risk scoring.
+aranya-watch is a forest intelligence MVP that ingests near real-time NASA FIRMS fire alerts, stores them in PostgreSQL/PostGIS, and exposes a developer-first REST API with simple geospatial search and risk scoring.
 
-Built for teams that want a clean starting point for wildfire monitoring infrastructure, AranyaCore focuses on a small, production-minded core:
+Built for teams that want a clean starting point for wildfire monitoring infrastructure, aranya-watch focuses on a small, production-minded core:
 
 - reliable FIRMS ingestion
 - PostGIS-backed geospatial queries
@@ -157,8 +157,8 @@ If you want to run the backend directly on your machine instead of Docker:
 ```bash
 brew install postgis
 brew services start postgresql@18
-createdb aranyacore
-psql -d aranyacore -c 'CREATE EXTENSION IF NOT EXISTS postgis;'
+createdb aranya_watch
+psql -d aranya_watch -c 'CREATE EXTENSION IF NOT EXISTS postgis;'
 cp .env.example .env
 python3.13 -m venv .venv
 . .venv/bin/activate
@@ -170,7 +170,7 @@ Set in `.env`:
 
 ```bash
 PREVIEW_MODE=false
-DATABASE_URL=postgresql+psycopg://postgres:postgres@localhost:5432/aranyacore
+DATABASE_URL=postgresql+psycopg://postgres:postgres@localhost:5432/aranya_watch
 ```
 
 Stop with `Ctrl+C`, then optionally:

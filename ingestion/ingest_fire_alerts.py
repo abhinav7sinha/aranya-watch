@@ -14,7 +14,7 @@ from app.db.session import SessionLocal
 from app.models.fire_alert import FireAlert
 from ingestion.firms_client import FirmsClient, FirmsFireRecord
 
-logger = logging.getLogger("aranyacore.ingestion")
+logger = logging.getLogger("aranya_watch.ingestion")
 
 
 def configure_logging() -> None:

@@ -9,7 +9,7 @@ from app.api.routes import router
 from app.core.config import get_settings
 from app.db.init_db import init_db
 
-logger = logging.getLogger("aranyacore.app")
+logger = logging.getLogger("aranya_watch.app")
 
 
 @asynccontextmanager

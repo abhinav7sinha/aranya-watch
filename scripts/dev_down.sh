@@ -13,4 +13,4 @@ else
 fi
 
 echo
-echo "AranyaCore has been stopped."
+echo "aranya-watch has been stopped."

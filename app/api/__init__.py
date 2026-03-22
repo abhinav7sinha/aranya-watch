@@ -1,1 +1,1 @@
-"""API routers for AranyaCore."""
+"""API routers for aranya-watch."""

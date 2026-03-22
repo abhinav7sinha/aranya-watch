@@ -1,4 +1,4 @@
-"""FastAPI routes for AranyaCore."""
+"""FastAPI routes for aranya-watch."""
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from fastapi.responses import HTMLResponse
@@ -84,7 +84,7 @@ def dashboard(
     <head>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <title>AranyaCore Dashboard</title>
+      <title>aranya-watch Dashboard</title>
       <style>
         :root {{
           color-scheme: light;
@@ -147,7 +147,7 @@ def dashboard(
     <body>
       <main>
         <section class="hero">
-          <h1>AranyaCore</h1>
+          <h1>aranya-watch</h1>
           <p>Recent NASA FIRMS fire alerts with a simple heuristic risk score.</p>
           {"<p class='accent'>Preview mode is active. Showing sample alerts because the database is unavailable.</p>" if preview_mode else ""}
         </section>

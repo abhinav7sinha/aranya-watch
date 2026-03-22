@@ -1,1 +1,1 @@
-"""Database models for AranyaCore."""
+"""Database models for aranya-watch."""

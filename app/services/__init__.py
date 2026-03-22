@@ -1,1 +1,1 @@
-"""Service layer for AranyaCore."""
+"""Service layer for aranya-watch."""
