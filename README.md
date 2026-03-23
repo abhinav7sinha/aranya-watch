@@ -11,7 +11,7 @@ Built for teams that want a clean starting point for wildfire monitoring infrast
 
 ## Demo
 
-![India visualizer demo](docs/images/india-visualizer-demo.png)
+![India visualizer demo](docs/images/demo.png)
 
 ## Architecture
 
