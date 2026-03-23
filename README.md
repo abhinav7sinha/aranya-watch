@@ -31,10 +31,14 @@ NASA FIRMS API
 
 ## Quick Start
 
-1. Copy the env file:
+1. Create `.env`:
 
 ```bash
-cp .env.example .env
+cat > .env <<'EOF'
+PREVIEW_MODE=false
+DATABASE_URL=postgresql+psycopg://postgres:postgres@localhost:5432/aranya_watch
+FIRMS_API_KEY=your_nasa_firms_api_key
+EOF
 ```
 
 2. In `.env`, set:
@@ -94,6 +98,37 @@ Stop and remove the Postgres volume too:
 sh scripts/dev_down.sh --volumes
 ```
 
+## NASA FIRMS Test Utilities
+
+These helpers are meant for live API exploration while building and debugging the ingestion flow.
+
+Check data availability:
+
+```bash
+sh scripts/test_firms_availability.sh --sensor VIIRS_SNPP_NRT
+```
+
+Fetch a preview of the latest global hotspot CSV:
+
+```bash
+sh scripts/test_firms_area.sh --source VIIRS_SNPP_NRT --area world --days 1
+```
+
+Fetch a preview for a bounding box:
+
+```bash
+sh scripts/test_firms_bbox.sh "-125,24,-66,49" 1
+```
+
+Download KML fire footprints:
+
+```bash
+sh scripts/test_firms_kml.sh --region usa_contiguous_and_hawaii --date-span 24h --sensor suomi-npp-viirs-c2
+```
+
+All of these utilities read `FIRMS_API_KEY` from `.env`.
+Printed URLs redact the actual key as `[MAP_KEY]`.
+
 ## Ingest Real Fire Data
 
 Run ingestion inside the backend container:
@@ -135,7 +170,6 @@ Then run locally:
 ```bash
 python3.13 -m venv .venv
 . .venv/bin/activate
-cp .env.example .env
 pip install -r requirements.txt
 uvicorn app.main:app --host 127.0.0.1 --port 8000
 ```
@@ -159,7 +193,6 @@ brew install postgis
 brew services start postgresql@18
 createdb aranya_watch
 psql -d aranya_watch -c 'CREATE EXTENSION IF NOT EXISTS postgis;'
-cp .env.example .env
 python3.13 -m venv .venv
 . .venv/bin/activate
 pip install -r requirements.txt
@@ -213,12 +246,23 @@ ingestion/
   firms_client.py
   ingest_fire_alerts.py
 scripts/
+  firms_api.py
+  test_firms_area.sh
+  test_firms_availability.sh
+  test_firms_bbox.sh
+  test_firms_kml.sh
 docker/
+docs/
 tests/
+  unit/
 requirements.txt
 docker-compose.yml
 README.md
 ```
+
+## Additional Docs
+
+- [NASA FIRMS API Guide](/Users/abhinavsinha/Documents/github-projects/aranya-watch/docs/nasa-firms-api-guide.md)
 
 ## Development Notes
 
@@ -231,5 +275,5 @@ README.md
 ## Testing
 
 ```bash
-pytest
+pytest tests/unit
 ```

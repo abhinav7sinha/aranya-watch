@@ -7,8 +7,12 @@ ROOT_DIR=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
 cd "$ROOT_DIR"
 
 if [ ! -f ".env" ]; then
-  cp .env.example .env
-  echo "Created .env from .env.example"
+  echo "Missing .env file in project root." >&2
+  echo "Create .env with at least:" >&2
+  echo "  PREVIEW_MODE=false" >&2
+  echo "  DATABASE_URL=postgresql+psycopg://postgres:postgres@localhost:5432/aranya_watch" >&2
+  echo "  FIRMS_API_KEY=your_nasa_firms_api_key" >&2
+  exit 1
 fi
 
 sh "$SCRIPT_DIR/docker_compose.sh" up --build -d
@@ -46,6 +50,8 @@ echo "  curl http://localhost:8000/health"
 echo "  curl \"http://localhost:8000/alerts/recent?limit=10\""
 echo "  curl \"http://localhost:8000/alerts/fire?lat=34.05&lon=-118.25&radius_km=50\""
 echo "  curl \"http://localhost:8000/alerts/bbox?min_lat=33.5&max_lat=34.5&min_lon=-119.0&max_lon=-117.5\""
+echo "  sh scripts/test_firms_availability.sh --sensor VIIRS_SNPP_NRT"
+echo "  sh scripts/test_firms_area.sh --source VIIRS_SNPP_NRT --area world --days 1"
 echo
 echo "Ingest real FIRMS data after setting FIRMS_API_KEY in .env:"
 echo "  sh scripts/docker_compose.sh exec backend python -m ingestion.ingest_fire_alerts --area world --days 1 --source VIIRS_SNPP_NRT"
