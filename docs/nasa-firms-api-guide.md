@@ -26,6 +26,25 @@ For `aranya-watch`, the primary endpoint is the CSV `area` API using:
 
 That is the Suomi-NPP VIIRS near real-time feed and is the source currently used in the ingestion pipeline.
 
+## Base URLs
+
+Primary CSV base URL used by `aranya-watch`:
+
+```text
+https://firms.modaps.eosdis.nasa.gov/api/area/csv
+```
+
+Other useful FIRMS API bases:
+
+```text
+https://firms.modaps.eosdis.nasa.gov/api/data_availability/csv
+https://firms.modaps.eosdis.nasa.gov/api/kml_fire_footprints
+```
+
+In the current codebase, the configurable base is defined in:
+
+- [config.py](/Users/abhinavsinha/Documents/github-projects/aranya-watch/app/core/config.py)
+
 ## Main FIRMS Services
 
 | Service | What it does | Notes |
@@ -56,13 +75,13 @@ This is the most important endpoint for `aranya-watch`.
 Most recent data:
 
 ```text
-/api/area/csv/[MAP_KEY]/[SOURCE]/[AREA_COORDINATES]/[DAY_RANGE]
+https://firms.modaps.eosdis.nasa.gov/api/area/csv/[MAP_KEY]/[SOURCE]/[AREA_COORDINATES]/[DAY_RANGE]
 ```
 
 Date-based query:
 
 ```text
-/api/area/csv/[MAP_KEY]/[SOURCE]/[AREA_COORDINATES]/[DAY_RANGE]/[DATE]
+https://firms.modaps.eosdis.nasa.gov/api/area/csv/[MAP_KEY]/[SOURCE]/[AREA_COORDINATES]/[DAY_RANGE]/[DATE]
 ```
 
 ### What It Returns
@@ -157,7 +176,7 @@ This endpoint helps answer:
 ### URL Pattern
 
 ```text
-/api/data_availability/csv/[MAP_KEY]/[SENSOR]
+https://firms.modaps.eosdis.nasa.gov/api/data_availability/csv/[MAP_KEY]/[SENSOR]
 ```
 
 ### Supported Sensor Values
@@ -175,7 +194,7 @@ This endpoint helps answer:
 ### Example
 
 ```text
-/api/data_availability/csv/[MAP_KEY]/ALL
+https://firms.modaps.eosdis.nasa.gov/api/data_availability/csv/[MAP_KEY]/ALL
 ```
 
 ### When To Use It
@@ -195,13 +214,13 @@ This endpoint is useful for visualization or GIS workflows rather than backend i
 Path style:
 
 ```text
-/api/kml_fire_footprints/[REGION]/[DATE_SPAN]/[SENSOR]
+https://firms.modaps.eosdis.nasa.gov/api/kml_fire_footprints/[REGION]/[DATE_SPAN]/[SENSOR]
 ```
 
 Query-string style:
 
 ```text
-/api/kml_fire_footprints/?region=[REGION]&date_span=[DATE_SPAN]&sensor=[SENSOR]
+https://firms.modaps.eosdis.nasa.gov/api/kml_fire_footprints/?region=[REGION]&date_span=[DATE_SPAN]&sensor=[SENSOR]
 ```
 
 ### Regions
@@ -292,19 +311,19 @@ If counts shift slightly over time, that can be normal. Near-real-time feeds may
 1. Check availability:
 
 ```text
-/api/data_availability/csv/[MAP_KEY]/VIIRS_SNPP_NRT
+https://firms.modaps.eosdis.nasa.gov/api/data_availability/csv/[MAP_KEY]/VIIRS_SNPP_NRT
 ```
 
 2. Pull latest sample data:
 
 ```text
-/api/area/csv/[MAP_KEY]/VIIRS_SNPP_NRT/world/1
+https://firms.modaps.eosdis.nasa.gov/api/area/csv/[MAP_KEY]/VIIRS_SNPP_NRT/world/1
 ```
 
 3. Test a bounded region:
 
 ```text
-/api/area/csv/[MAP_KEY]/VIIRS_SNPP_NRT/-125,24,-66,49/1
+https://firms.modaps.eosdis.nasa.gov/api/area/csv/[MAP_KEY]/VIIRS_SNPP_NRT/-125,24,-66,49/1
 ```
 
 4. If a date looks empty, inspect FIRMS missing-date information

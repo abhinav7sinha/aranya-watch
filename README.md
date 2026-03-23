@@ -264,6 +264,12 @@ README.md
 
 - [NASA FIRMS API Guide](/Users/abhinavsinha/Documents/github-projects/aranya-watch/docs/nasa-firms-api-guide.md)
 
+NASA FIRMS base CSV URL used by this project:
+
+```text
+https://firms.modaps.eosdis.nasa.gov/api/area/csv
+```
+
 ## Development Notes
 
 - Python 3.11+
