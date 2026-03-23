@@ -43,6 +43,7 @@ echo "aranya-watch is ready."
 echo "Open:"
 echo "  http://localhost:8000/docs"
 echo "  http://localhost:8000/dashboard"
+echo "  http://localhost:8000/visualizer/india"
 echo "  http://localhost:8000/health"
 echo
 echo "Quick API checks:"

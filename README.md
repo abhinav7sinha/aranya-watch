@@ -9,6 +9,10 @@ Built for teams that want a clean starting point for wildfire monitoring infrast
 - a minimal FastAPI surface
 - a lightweight dashboard for quick inspection
 
+## Demo
+
+![India visualizer demo](docs/images/india-visualizer-demo.png)
+
 ## Architecture
 
 ```text
@@ -58,6 +62,7 @@ sh scripts/dev_up.sh
 
 - API docs: `http://localhost:8000/docs`
 - Dashboard: `http://localhost:8000/dashboard`
+- India visualizer: `http://localhost:8000/visualizer/india`
 - Health: `http://localhost:8000/health`
 
 5. Verify the real backend is active:
@@ -156,6 +161,8 @@ This ingestion step is designed to run every 10 to 15 minutes from cron, a sched
 | `GET /alerts/fire?lat=...&lon=...&radius_km=...` | Nearby alerts using a radius query |
 | `GET /alerts/bbox?min_lat=...&max_lat=...&min_lon=...&max_lon=...` | Alerts inside a bounding box |
 | `GET /dashboard` | Minimal HTML dashboard for recent alerts |
+| `GET /visualizer/india` | India-focused live fire map with NASA live mode and platform mode |
+| `GET /alerts/india/live?day_range=3&limit=1500` | Live NASA FIRMS detections filtered for the India experience |
 
 ## Preview Mode
 

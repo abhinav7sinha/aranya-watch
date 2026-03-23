@@ -12,8 +12,8 @@ PREVIEW_ALERTS: list[FireAlertRead] = [
     FireAlertRead.model_validate(
         {
             "id": UUID("11111111-1111-1111-1111-111111111111"),
-            "latitude": 34.0522,
-            "longitude": -118.2437,
+            "latitude": 21.1458,
+            "longitude": 79.0882,
             "brightness": 367.4,
             "confidence": "high",
             "acq_datetime": "2026-03-22T15:05:00Z",
@@ -24,8 +24,8 @@ PREVIEW_ALERTS: list[FireAlertRead] = [
     FireAlertRead.model_validate(
         {
             "id": UUID("22222222-2222-2222-2222-222222222222"),
-            "latitude": 37.7749,
-            "longitude": -122.4194,
+            "latitude": 18.5204,
+            "longitude": 73.8567,
             "brightness": 341.7,
             "confidence": "nominal",
             "acq_datetime": "2026-03-22T14:20:00Z",
@@ -36,8 +36,8 @@ PREVIEW_ALERTS: list[FireAlertRead] = [
     FireAlertRead.model_validate(
         {
             "id": UUID("33333333-3333-3333-3333-333333333333"),
-            "latitude": 39.7392,
-            "longitude": -104.9903,
+            "latitude": 26.8467,
+            "longitude": 80.9462,
             "brightness": 355.0,
             "confidence": "high",
             "acq_datetime": "2026-03-22T13:45:00Z",
@@ -48,13 +48,37 @@ PREVIEW_ALERTS: list[FireAlertRead] = [
     FireAlertRead.model_validate(
         {
             "id": UUID("44444444-4444-4444-4444-444444444444"),
-            "latitude": 47.6062,
-            "longitude": -122.3321,
+            "latitude": 23.2599,
+            "longitude": 77.4126,
             "brightness": 318.9,
             "confidence": "low",
             "acq_datetime": "2026-03-22T12:10:00Z",
             "created_at": "2026-03-22T12:11:00Z",
             "risk_score": 25.67,
+        }
+    ),
+    FireAlertRead.model_validate(
+        {
+            "id": UUID("55555555-5555-5555-5555-555555555555"),
+            "latitude": 15.9129,
+            "longitude": 79.7400,
+            "brightness": 389.2,
+            "confidence": "high",
+            "acq_datetime": "2026-03-22T11:50:00Z",
+            "created_at": "2026-03-22T11:52:00Z",
+            "risk_score": 86.76,
+        }
+    ),
+    FireAlertRead.model_validate(
+        {
+            "id": UUID("66666666-6666-6666-6666-666666666666"),
+            "latitude": 11.1271,
+            "longitude": 78.6569,
+            "brightness": 332.8,
+            "confidence": "nominal",
+            "acq_datetime": "2026-03-22T11:12:00Z",
+            "created_at": "2026-03-22T11:15:00Z",
+            "risk_score": 49.84,
         }
     ),
 ]

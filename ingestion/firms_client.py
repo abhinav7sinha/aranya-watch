@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import csv
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from io import StringIO
 
 import httpx
@@ -35,6 +35,7 @@ class FirmsClient:
         area: str = "world",
         day_range: int | None = None,
         source: str | None = None,
+        query_date: date | None = None,
     ) -> list[FirmsFireRecord]:
         """Fetch and normalize fire alerts from NASA FIRMS."""
 
@@ -43,15 +44,16 @@ class FirmsClient:
 
         dataset = source or self.settings.firms_source
         days = day_range or self.settings.firms_day_range
-        url = "/".join(
-            [
-                self.settings.firms_base_url.rstrip("/"),
-                self.settings.firms_api_key,
-                dataset,
-                area,
-                str(days),
-            ]
-        )
+        url_parts = [
+            self.settings.firms_base_url.rstrip("/"),
+            self.settings.firms_api_key,
+            dataset,
+            area,
+            str(days),
+        ]
+        if query_date is not None:
+            url_parts.append(query_date.isoformat())
+        url = "/".join(url_parts)
 
         with httpx.Client(timeout=self.settings.request_timeout_seconds) as client:
             response = client.get(url)
